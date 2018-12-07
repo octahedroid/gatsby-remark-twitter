@@ -1,11 +1,11 @@
 {
   "name": "gatsby-remark-twitter",
-  "version": "0.0.7",
-  "description": "Embed Youtube Videos in Gatsby via Markdown",
+  "version": "0.1.0",
+  "description": "Embed Tweet cards in Gatsby via Markdown",
   "main": "index.js",
-  "author": "Marvin Mieth <ntwcklng@gmail.com>",
+  "author": "Jairo Rondon <jrondon@anexusit.com>",
   "license": "MIT",
-  "keywords": ["gatsby", "gatsby-plugin", "remark"],
+  "keywords": ["gatsby", "gatsby-plugin", "remark", "twitter"],
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "unist-util-visit": "^1.1.3",
