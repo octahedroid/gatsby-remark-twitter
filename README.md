@@ -45,9 +45,9 @@ https://twitter.com/wesbos/status/1070699265272496128
 
 ```
 
-> __NOTE:__ Make sure to copy the link instead of embed code or Spotify URI.
+> __NOTE:__ Make sure to copy the link instead of embed code.
 
-<p align="center"><img src="https://i.imgur.com/evEv2LJ.jpg" alt="screenshot for share > copy artist link" /></p>
+<p align="center"><img src="https://i.imgur.com/evEv2LJ.jpg" alt="screenshot for share > copy tweet link" /></p>
 
 ## Configuration
 
