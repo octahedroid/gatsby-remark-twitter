@@ -2,7 +2,7 @@
 
 Embed Tweet cards in Gatsby markdown.
 
-### [View a live demo here](https://jmolivas.weknowinc.com/badcamp-2018-wrapup)
+[View a live demo here](https://jmolivas.weknowinc.com/badcamp-2018-wrapup)
 
 ## Install
 
@@ -42,7 +42,7 @@ https://twitter.com/dan_abramov/status/1068884262273933312
 
 ```
 
-> __NOTE:__ Make sure to copy the link instead of embed code.
+> __NOTE:__ Make sure to copy the Tweet link instead of the embed code.
 
 <p align="center"><img src="https://i.imgur.com/evEv2LJ.jpg" alt="screenshot for share > copy tweet link" /></p>
 
