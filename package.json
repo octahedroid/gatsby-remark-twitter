@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-remark-twitter",
-  "version": "0.1.0",
-  "description": "Embed Tweet cards in Gatsby via Markdown",
+  "name": "@weknow/gatsby-remark-twitter",
+  "version": "0.1.1",
+  "description": "Embed Tweet cards in Gatsby markdown",
   "main": "index.js",
   "author": "Jairo Rondon <jrondon@anexusit.com>",
   "license": "MIT",
-  "keywords": ["gatsby", "gatsby-plugin", "remark", "twitter"],
+  "keywords": ["gatsby", "gatsby-plugin", "remark", "markdown", "twitter"],
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "unist-util-visit": "^1.1.3",
@@ -21,9 +21,9 @@
     "prepublish": "cross-env NODE_ENV=production npm run build",
     "watch": "babel -w src --out-dir ."
   },
-  "homepage": "https://github.com/weknow/gatsby-remark-twitter#readme",
+  "homepage": "https://github.com/weknowinc/gatsby-remark-twitter#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/weknow/gatsby-remark-twitter.git"
+    "url": "git+https://github.com/weknowinc/gatsby-remark-twitter.git"
   }
 }

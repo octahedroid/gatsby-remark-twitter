@@ -1,25 +1,23 @@
 # gatsby-remark-twitter
 
-Embed Tweet cards in your markdown!
-
-### [View a live demo here](https://jmolivas.weknowinc.com/)
+Embed Tweet cards in Gatsby markdown.
 
 ## Install
 
-1. Install plugin to your site:
-
 ```bash
-yarn add gatsby-remark-twitter
+npm install --save @weknow/gatsby-remark-twitter
 ```
 
-2. Add `gatsby-remark-twitter` to your `gatsby-transformer-remark` plugins in `gatsby-config.js`:
+## How to use
 
 ```js
+
+// In your gatsby-config.js
 plugins: [
   {
     resolve: "gatsby-transformer-remark",
     options: {
-      plugins: ["gatsby-remark-twitter"]
+      plugins: ["@weknow/gatsby-remark-twitter"]
     }
   }
 ];
@@ -41,7 +39,6 @@ https://twitter.com/gatsbyjs/status/1055939617646465024
 You can also embed several tweets
 
 https://twitter.com/wesbos/status/1070699265272496128
-
 
 ```
 
