@@ -16,14 +16,9 @@
     "cross-env": "^5.0.5",
     "unist-util-map": "^1.0.3"
   },
-  "scripts": {
-    "build": "babel src --out-dir .",
-    "prepublish": "cross-env NODE_ENV=production npm run build",
-    "watch": "babel -w src --out-dir ."
-  },
-  "homepage": "https://github.com/weknow/gatsby-remark-twitter#readme",
+  "homepage": "https://github.com/weknowinc/gatsby-remark-twitter#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/weknow/gatsby-remark-twitter.git"
+    "url": "git+https://github.com/weknowinc/gatsby-remark-twitter.git"
   }
 }
