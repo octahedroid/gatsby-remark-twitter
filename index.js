@@ -8,7 +8,7 @@ const getBloquequote = async (url) => {
     const apiUrl = `https://publish.twitter.com/oembed?url=${url}`;
 
     const response = await fetch(apiUrl);
-    const json = await response.json();
+    return await response.json();
   } catch (error) {
     console.log(error);
   }
