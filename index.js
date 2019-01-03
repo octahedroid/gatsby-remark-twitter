@@ -15,16 +15,23 @@ const getBloquequote = async (url) => {
 };
 
 module.exports = async ({ markdownAST }) => {
-  visit(markdownAST, 'text', async (node) => {
+  const nodes = [];
+  visit(markdownAST, 'text', (node) => {
     const { value } = node;
     const tweetLink = value.match(/https:\/\/twitter\.com\/([A-Za-z0-9-_]*\/status\/[A-Za-z0-9-_?=]*)/gi);
     if (tweetLink) {
-      console.log(`\n embeding tweet: ${tweetLink} \n`);
-      const embedData = await getBloquequote(tweetLink);
-      node.type = 'html';
-      node.value = embedData.html;
+      nodes.push([node, tweetLink]);
     }
-  });
+  })
+  for (let i = 0; i < nodes.length; i++) {
+    const nt = nodes[i];
+    const node = nt[0];
+    const tweetLink = nt[1];
+    console.log(`\n embeding tweet: ${tweetLink} \n`);
+    const embedData = await getBloquequote(tweetLink);
+    node.type = 'html';
+    node.value = embedData.html;
+  }
 
   return markdownAST;
 };
