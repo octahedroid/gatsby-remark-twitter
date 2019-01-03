@@ -1,6 +1,15 @@
 const t = require('tap')
 const twitter = require('../')
 
+const bqStr = `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Sorry, everyone. I&#39;m giving up pro bono argument services.`
+
+const cleanTweet = (ast) => {
+  if (ast.children[0].value.indexOf(bqStr) === 0) {
+    ast.children[0].value = bqStr
+  }
+  return ast
+}
+
 t.test('basic conversion', async t => {
   const markdownAST = {
     type: 'root',
@@ -25,7 +34,7 @@ t.test('basic conversion', async t => {
   }
 
   await twitter({ markdownAST }, {})
-  t.matchSnapshot(markdownAST, 'should convert twitter link')
+  t.matchSnapshot(cleanTweet(markdownAST), 'should convert twitter link')
 })
 
 t.test('dont convert if nested', async t => {

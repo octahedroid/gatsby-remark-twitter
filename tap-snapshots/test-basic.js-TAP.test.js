@@ -11,7 +11,7 @@ exports[`test/basic.js TAP basic conversion > should convert twitter link 1`] = 
    [ { type: 'html',
        children: null,
        value:
-        '<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Sorry, everyone. I&#39;m giving up pro bono argument services. Either it&#39;s gotta be good for me, or you pay my standard consulting rate.</p>&mdash; isaacs 💙💜💖🏳️‍🌈 (@izs) <a href="https://twitter.com/izs/status/503226223527337985?ref_src=twsrc%5Etfw">August 23, 2014</a></blockquote>\\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\\n' } ] }
+        '<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Sorry, everyone. I&#39;m giving up pro bono argument services.' } ] }
 `
 
 exports[`test/basic.js TAP dont convert if nested > should not convert twitter inline link 1`] = `
@@ -43,7 +43,6 @@ exports[`test/basic.js TAP failed conversion > should handle failure nicely 1`] 
 
 exports[`test/basic.js TAP failed conversion > should get expected logs 1`] = `
 [ [ '\\nfound tweetLink', 'https://twitter.com/izs/status/13425' ],
-  [ '{\\n  "type": "root",\\n  "children": [\\n    {\\n      "type": "paragraph",\\n      "children": [\\n        {\\n          "type": "link",\\n          "title": null,\\n          "url": "https://twitter.com/izs/status/13425",\\n          "children": [\\n            {\\n              "type": "text",\\n              "value": "https://twitter.com/izs/status/13425"\\n            }\\n          ]\\n        }\\n      ]\\n    }\\n  ]\\n}' ],
   [ '\\nembeding tweet: https://twitter.com/izs/status/13425\\n' ],
   [ '\\nfailed to get blockquote for https://twitter.com/izs/status/13425\\n',
     'ERROR MESSAGE: invalid json response body at https://publish.twitter.com/oembed?url=https://twitter.com/izs/status/13425 reason: Unexpected token < in JSON at position 0' ] ]
