@@ -24,13 +24,15 @@ const getBloquequote = async (url, opt) => {
   return await response.json();
 };
 
-const twitterRegexp = /https:\/\/twitter\.com\/([A-Za-z0-9-_]*\/status\/[A-Za-z0-9-_?=]*)/gi;
+const momentRegexp = /https:\/\/twitter.com\/i\/moments\/[0-9]+/i;
+const tweetRegexp = /https:\/\/twitter\.com\/[A-Za-z0-9-_]*\/status\/[0-9]+/i;
 
 // only do the embedding for a single twitter url on its own paragraph.
 const isTwitterLink = node => {
   return node.children.length === 1 &&
     node.children[0].type === 'link' &&
-    node.children[0].url.match(twitterRegexp) &&
+    (tweetRegexp.test(node.children[0].url) ||
+     momentRegexp.test(node.children[0].url)) &&
     node.children[0].children.length === 1 &&
     node.children[0].children[0].type === 'text' &&
     node.children[0].children[0].value === node.children[0].url;
