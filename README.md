@@ -44,6 +44,25 @@ plugins: [
 ];
 ```
 
+These other options are also available, to control how the widget is
+rendered:
+
+- **hideThread** Default `true`.  Set to `false` to also show the
+  tweet that a tweet is in reply to.  (This is enabled by default
+  because typically you'd just embed both tweets, and it gets really
+  noisy when embedding entire twitter threads in a post.)
+- **hideMedia** Default `false`.  Set to `true` to hide media that is
+  included in a tweet.  For example, if a tweet has a photo or a video
+  embedded, this means that the user has to click through to view it.
+- **align** Set to `'left'`, `'right'` or `'center'` to make the
+  embedded tweet float left, right, or be center-aligned.  (The
+  default is left-aligned, but not floated.)
+- **theme** Set to `'dark'` to use the dark theme.
+- **linkColor** Set to a valid RGB value to specify link colors.
+- **widgetType** Set to `'video'` to return a Twitter Video embed for
+  the given Tweet.
+
+
 ## Usage
 
 ```markdown

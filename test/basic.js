@@ -1,7 +1,7 @@
 const t = require('tap')
 const twitter = require('../')
 
-const bqStr = `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Sorry, everyone. I&#39;m giving up pro bono argument services.`
+const bqStr = `<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Sorry, everyone. I&#39;m giving up pro bono argument services.`
 
 const cleanTweet = (ast) => {
   if (ast.children[0].value.indexOf(bqStr) === 0) {

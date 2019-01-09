@@ -3,8 +3,22 @@
 const visit = require('unist-util-visit');
 const fetch = require('node-fetch');
 
-const getBloquequote = async (url) => {
-  const apiUrl = `https://publish.twitter.com/oembed?url=${url}`;
+const getBloquequote = async (url, opt) => {
+  const apiUrl = `https://publish.twitter.com/oembed?url=${
+    url
+  }&hide_thread=${
+    opt.hideThread !== false ? '1' : '0'
+  }&align=${
+    opt.align || ''
+  }&hide_media=${
+    opt.hideMedia ? '1' : '0'
+  }&theme=${
+    opt.theme || ''
+  }&link_color=${
+    opt.linkColor || ''
+  }&widget_type=${
+    opt.widgetType || ''
+  }&omit_script=true&dnt=true`
 
   const response = await fetch(apiUrl);
   return await response.json();
@@ -39,7 +53,7 @@ module.exports = async ({ markdownAST }, pluginOptions) => {
     const tweetLink = nt[1];
     debug(`\nembeding tweet: ${tweetLink}\n`);
     try {
-      const embedData = await getBloquequote(tweetLink);
+      const embedData = await getBloquequote(tweetLink, pluginOptions);
       node.type = 'html';
       node.value = embedData.html;
       node.children = null;
