@@ -1,6 +1,6 @@
 {
   "name": "@weknow/gatsby-remark-twitter",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Embed Tweet cards in Gatsby markdown",
   "main": "index.js",
   "author": "Jairo Rondon <jrondon@anexusit.com>",
