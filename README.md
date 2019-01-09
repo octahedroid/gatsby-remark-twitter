@@ -22,6 +22,27 @@ plugins: [
 ];
 ```
 
+If you want to get debug output, turn on the `debug` option in the
+plugin options.
+
+```js
+// In your gatsby-config.js
+plugins: [
+  {
+    resolve: "gatsby-transformer-remark",
+    options: {
+      plugins: [
+        {
+          resolve: "@weknow/gatsby-remark-twitter",
+          options: {
+            debug: true
+          }
+        }
+      ]
+    }
+  }
+];
+
 ## Usage
 
 ```markdown
