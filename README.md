@@ -1,6 +1,6 @@
 # gatsby-remark-twitter
 
-Embed Tweet cards in Gatsby markdown.
+Embed Tweet and Moment cards in Gatsby markdown.
 
 ## Install
 
@@ -80,6 +80,10 @@ You can embed several tweets
 https://twitter.com/wesbos/status/1068597847237541888
 
 https://twitter.com/dan_abramov/status/1068884262273933312
+
+Or a moment
+
+https://twitter.com/i/moments/944326645493612545
 
 ```
 

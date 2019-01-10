@@ -117,3 +117,39 @@ t.test('failed conversion', async t => {
   t.matchSnapshot(markdownAST, 'should handle failure nicely')
   t.matchSnapshot(clean(logs), 'should get expected logs')
 })
+
+t.test('plugin options, and a moment', async t => {
+
+  const markdownAST = {
+    type: 'root',
+    children: [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "link",
+            "title": null,
+            "url": "https://twitter.com/i/moments/944326645493612545",
+            "children": [
+              {
+                "type": "text",
+                "value": "https://twitter.com/i/moments/944326645493612545"
+              }
+            ],
+          }
+        ]
+      }
+    ]
+  }
+
+  await twitter({ markdownAST }, {
+    hideThread: false,
+    align: 'left',
+    hideMedia: true,
+    theme: 'dark',
+    linkColor: '#ff0000',
+    widgetType: 'video'
+  })
+
+  t.matchSnapshot(markdownAST, 'an optioned up moment')
+})

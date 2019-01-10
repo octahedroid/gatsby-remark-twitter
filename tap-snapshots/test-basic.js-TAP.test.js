@@ -45,5 +45,14 @@ exports[`test/basic.js TAP failed conversion > should get expected logs 1`] = `
 [ [ '\\nfound tweetLink', 'https://twitter.com/izs/status/13425' ],
   [ '\\nembeding tweet: https://twitter.com/izs/status/13425\\n' ],
   [ '\\nfailed to get blockquote for https://twitter.com/izs/status/13425\\n',
-    'ERROR MESSAGE: invalid json response body at https://publish.twitter.com/oembed?url=https://twitter.com/izs/status/13425&hide_thread=1&align=&hide_media=0&theme=&link_color=&widget_type=&omit_script=true&dnt=true reason: Unexpected token < in JSON at position 0' ] ]
+    'ERROR MESSAGE: invalid json response body at https://publish.twitter.com/oembed?url=https://twitter.com/izs/status/13425&hide_thread=1&align=&hide_media=0&theme=&link_color=&widget_type=&omit_script=true&dnt=true&limit=20&chrome=nofooter reason: Unexpected token < in JSON at position 0' ] ]
+`
+
+exports[`test/basic.js TAP plugin options, and a moment > an optioned up moment 1`] = `
+{ type: 'root',
+  children:
+   [ { type: 'html',
+       children: null,
+       value:
+        '<a class="twitter-moment" href="https://twitter.com/i/moments/944326645493612545?ref_src=twsrc%5Etfw">The True Meaning of Christmas</a>\\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\\n' } ] }
 `

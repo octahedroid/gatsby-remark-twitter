@@ -18,7 +18,7 @@ const getBloquequote = async (url, opt) => {
     opt.linkColor || ''
   }&widget_type=${
     opt.widgetType || ''
-  }&omit_script=true&dnt=true`
+  }&omit_script=true&dnt=true&limit=20&chrome=nofooter`
 
   const response = await fetch(apiUrl);
   return await response.json();
