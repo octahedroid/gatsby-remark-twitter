@@ -1,7 +1,7 @@
 const t = require('tap')
 const twitter = require('../')
 
-const bqStr = `<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Sorry, everyone. I&#39;m giving up pro bono argument services.`
+const bqStr = `<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Sorry, everyone. I&#39;m giving up pro bono argument services.`
 
 const cleanTweet = (ast) => {
   if (ast.children[0].value.indexOf(bqStr) === 0) {
@@ -116,4 +116,40 @@ t.test('failed conversion', async t => {
   await twitter({ markdownAST }, { debug: true })
   t.matchSnapshot(markdownAST, 'should handle failure nicely')
   t.matchSnapshot(clean(logs), 'should get expected logs')
+})
+
+t.test('plugin options, and a moment', async t => {
+
+  const markdownAST = {
+    type: 'root',
+    children: [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "link",
+            "title": null,
+            "url": "https://twitter.com/i/moments/944326645493612545",
+            "children": [
+              {
+                "type": "text",
+                "value": "https://twitter.com/i/moments/944326645493612545"
+              }
+            ],
+          }
+        ]
+      }
+    ]
+  }
+
+  await twitter({ markdownAST }, {
+    hideThread: false,
+    align: 'left',
+    hideMedia: true,
+    theme: 'dark',
+    linkColor: '#ff0000',
+    widgetType: 'video'
+  })
+
+  t.matchSnapshot(markdownAST, 'an optioned up moment')
 })
