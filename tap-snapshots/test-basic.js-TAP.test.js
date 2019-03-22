@@ -11,7 +11,7 @@ exports[`test/basic.js TAP basic conversion > should convert twitter link 1`] = 
    [ { type: 'html',
        children: null,
        value:
-        '<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Sorry, everyone. I&#39;m giving up pro bono argument services.' } ] }
+        '<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">' } ] }
 `
 
 exports[`test/basic.js TAP dont convert if nested > should not convert twitter inline link 1`] = `
@@ -63,5 +63,23 @@ exports[`test/basic.js TAP twitter link with two _ chars in username > should co
    [ { type: 'html',
        children: null,
        value:
-        '<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">History of <a href="https://twitter.com/hashtag/ChaosEngineering?src=hash&amp;ref_src=twsrc%5Etfw">#ChaosEngineering</a> shared by <a href="https://twitter.com/adrianco?ref_src=twsrc%5Etfw">@adrianco</a> at <a href="https://twitter.com/hashtag/ChaosConf?src=hash&amp;ref_src=twsrc%5Etfw">#ChaosConf</a>:  <br>💥2004 - <a href="https://twitter.com/jesserobbins?ref_src=twsrc%5Etfw">@jesserobbins</a> <br>💥2012 - <a href="https://twitter.com/NetflixOSS?ref_src=twsrc%5Etfw">@NetflixOSS</a> Simian Army <br>💥2016 - <a href="https://twitter.com/GremlinInc?ref_src=twsrc%5Etfw">@GremlinInc</a> founded <br>💥2017 - Chaos Engineering book by <a href="https://twitter.com/nora_js?ref_src=twsrc%5Etfw">@nora_js</a> and <a href="https://twitter.com/caseyrosenthal?ref_src=twsrc%5Etfw">@caseyrosenthal</a> / open source <a href="https://twitter.com/chaostoolkit?ref_src=twsrc%5Etfw">@chaostoolkit</a> project <br>💥2018 - <a href="https://twitter.com/ChaosConf?ref_src=twsrc%5Etfw">@ChaosConf</a> <a href="https://t.co/wm1vc2sMe7">pic.twitter.com/wm1vc2sMe7</a></p>&mdash; Ana Medina 👩🏽‍💻 (@Ana_M_Medina) <a href="https://twitter.com/Ana_M_Medina/status/1045730232743813121?ref_src=twsrc%5Etfw">September 28, 2018</a></blockquote>\\n' } ] }
+        '<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">' } ] }
+`
+
+exports[`test/basic.js TAP twitter link with other random emphasized stuff > should not convert twitter link 1`] = `
+{ type: 'root',
+  children:
+   [ { type: 'paragraph',
+       children:
+        [ { type: 'link',
+            url:
+             'https://twitter.com/Ana_M_Medina/status/1045730232743813121',
+            children:
+             [ { type: 'text', value: 'this makes me feel ' },
+               { type: 'emphasis',
+                 children:
+                  [ { type: 'text', value: 'happy ' },
+                    { type: 'strong', children: [ { type: 'text', value: 'and' } ] },
+                    { type: 'text', value: ' sad' } ] },
+               { type: 'text', value: '.' } ] } ] } ] }
 `
