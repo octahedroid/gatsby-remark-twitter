@@ -153,3 +153,41 @@ t.test('plugin options, and a moment', async t => {
 
   t.matchSnapshot(markdownAST, 'an optioned up moment')
 })
+
+t.test('twitter link with two _ chars in username', async t => {
+  const markdownAST = {
+    type: 'root',
+    children: [
+      {
+        type: 'paragraph',
+        children: [
+          {
+            type: 'link',
+            url: 'https://twitter.com/Ana_M_Medina/status/1045730232743813121',
+            children: [
+              {
+                type: 'text',
+                value: 'https://twitter.com/Ana',
+              },
+              {
+                type: 'emphasis',
+                children: [
+                  {
+                    type: 'text',
+                    value: 'M',
+                  }
+                ],
+              },
+              {
+                type: 'text',
+                value: 'Medina/status/1045730232743813121',
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  await twitter({ markdownAST }, {})
+  t.matchSnapshot(cleanTweet(markdownAST), 'should convert twitter link')
+})
