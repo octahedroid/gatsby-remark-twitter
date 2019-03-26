@@ -1,10 +1,10 @@
 const t = require('tap')
 const twitter = require('../')
 
-const bqStr = `<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Sorry, everyone. I&#39;m giving up pro bono argument services.`
+const bqStr = `<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">`
 
 const cleanTweet = (ast) => {
-  if (ast.children[0].value.indexOf(bqStr) === 0) {
+  if (ast.children[0].value && ast.children[0].value.indexOf(bqStr) === 0) {
     ast.children[0].value = bqStr
   }
   return ast
@@ -152,4 +152,93 @@ t.test('plugin options, and a moment', async t => {
   })
 
   t.matchSnapshot(markdownAST, 'an optioned up moment')
+})
+
+t.test('twitter link with two _ chars in username', async t => {
+  const markdownAST = {
+    type: 'root',
+    children: [
+      {
+        type: 'paragraph',
+        children: [
+          {
+            type: 'link',
+            url: 'https://twitter.com/Ana_M_Medina/status/1045730232743813121',
+            children: [
+              {
+                type: 'text',
+                value: 'https://twitter.com/Ana',
+              },
+              {
+                type: 'emphasis',
+                children: [
+                  {
+                    type: 'text',
+                    value: 'M',
+                  }
+                ],
+              },
+              {
+                type: 'text',
+                value: 'Medina/status/1045730232743813121',
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  await twitter({ markdownAST }, {})
+  t.matchSnapshot(cleanTweet(markdownAST), 'should convert twitter link')
+})
+
+t.test('twitter link with other random emphasized stuff', async t => {
+  const markdownAST = {
+    type: 'root',
+    children: [
+      {
+        type: 'paragraph',
+        children: [
+          {
+            type: 'link',
+            url: 'https://twitter.com/Ana_M_Medina/status/1045730232743813121',
+            children: [
+              {
+                type: 'text',
+                value: 'this makes me feel ',
+              },
+              {
+                type: 'emphasis',
+                children: [
+                  {
+                    type: 'text',
+                    value: 'happy ',
+                  },
+                  {
+                    type: 'strong',
+                    children: [
+                      {
+                        type: 'text',
+                        value: 'and',
+                      }
+                    ],
+                  },
+                  {
+                    type: 'text',
+                    value: ' sad',
+                  },
+                ],
+              },
+              {
+                type: 'text',
+                value: '.',
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  await twitter({ markdownAST }, {})
+  t.matchSnapshot(cleanTweet(markdownAST), 'should not convert twitter link')
 })

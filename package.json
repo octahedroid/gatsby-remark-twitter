@@ -18,9 +18,8 @@
     "node-fetch": "^2.3.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "cross-env": "^5.0.5",
-    "tap": "^12.1.1"
+    "tap": "^13.0.0-rc.13"
   },
   "homepage": "https://github.com/weknowinc/gatsby-remark-twitter#readme",
   "repository": {

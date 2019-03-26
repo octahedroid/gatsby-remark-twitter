@@ -33,10 +33,20 @@ const isTwitterLink = node => {
     node.children[0].type === 'link' &&
     (tweetRegexp.test(node.children[0].url) ||
      momentRegexp.test(node.children[0].url)) &&
-    node.children[0].children.length === 1 &&
-    node.children[0].children[0].type === 'text' &&
-    node.children[0].children[0].value === node.children[0].url;
+    node.children[0].children.length >= 1 &&
+    flattenEms(node.children[0].children) === node.children[0].url;
 }
+
+// this only has to handle cases where there's a username like x_y_z, so that
+// it will match the url in the link.
+// It produces garbage results for stuff like `_happy *and* sad_`, because
+// that could never exist in a URL anyway, so it is clearly not a match.
+const flattenEms = children =>
+  children.reduce((flat, c) =>
+    (c.type === 'text') ? flat + c.value
+    : (c.type === 'emphasis' && c.children && c.children.length === 1)
+      ? flat + `_${c.children[0].value}_`
+    : flat, '')
 
 module.exports = async ({ markdownAST }, pluginOptions) => {
   const debug = pluginOptions.debug ? console.log : () => {}
