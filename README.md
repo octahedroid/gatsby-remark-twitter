@@ -5,7 +5,7 @@ Embed Tweet and Moment cards in Gatsby markdown.
 ## Install
 
 ```bash
-npm install --save @weknow/gatsby-remark-twitter
+npm install --save "@weknow/gatsby-remark-twitter"
 ```
 
 ## How to use
